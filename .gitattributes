@@ -1,0 +1,7 @@
+# Linguist documentation at https://github.com/github/linguist
+
+# Ignore all .css files for the purpose of language detection
+*.css linguist-detectable=false
+
+# Mark the 'typescript' directory as containing TypeScript code
+typescript/* linguist-language=TypeScript
