@@ -1,8 +1,8 @@
 "use client"; 
 import React, { useState, useEffect } from 'react';
-import EpisodeList from '../components/EpisodeList';
-import CharacterGrid from '../components/CharacterGrid';
-import { Episode, Character } from '../types';
+import EpisodeList from '../../components/EpisodeList';
+import CharacterGrid from '../../components/CharacterGrid';
+import { Episode, Character } from '../../types';
 import './globals.css';
 
 

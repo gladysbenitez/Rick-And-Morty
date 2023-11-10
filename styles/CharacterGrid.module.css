@@ -1,0 +1,12 @@
+.charactergrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding-left: 250px; 
+  }
+  .charactercard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
