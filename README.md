@@ -1,4 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rick and Morty Character Feed
+
+This project is a simple web application that utilizes the [Rick and Morty API](https://rickandmortyapi.com/documentation/#rest) to display a list of episodes and characters from the popular animated series "Rick and Morty". Users can select an episode to view the characters that appear in it.
+
+## Features
+
+- **List Episodes**: View all episodes from "Rick and Morty" on initial page load.
+- **Character Display**: See characters displayed as image cards on the main screen.
+- **Dynamic Episode Selection**: Click on an episode to see the characters from that episode in the main view.
+- **Responsive Design**: The app is built to be responsive, providing a seamless experience on both desktop and mobile devices.
+
+## Built With
+
+- [Next.js](https://nextjs.org/docs) - The React framework for production
+- [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript
+- [Rick and Morty API](https://rickandmortyapi.com/) - The data source for episodes and characters
+
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
+
+### Installation
+
+1. Clone the repository:
+```sh
+git clone https://github.com/gladysbenitez/My-Rick-And-Morty-App.git
+```
+Navigate to the project directory and install NPM packages
+
+```bash
+cd my-rick-and-morty-app
+npm install
+```
 
 ## Getting Started
 
@@ -18,9 +56,22 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
+
+After launching the app, you can interact with it as follows:
+
+- The episodes are listed on the left side of the page. Click on any episode to view the characters that appeared in that episode.
+- Click on an episode again to unselect and revert to the initial view.
+
+## Contact & Acknowledgements
+
+Gladys Benitez - gladysbenitez.an@gmail.com
 
 ## Learn More
+
+Project Link: https://github.com/gladysbenitez/My-Rick-And-Morty-App
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 To learn more about Next.js, take a look at the following resources:
 
