@@ -1,95 +1,62 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"; 
+import React, { useState, useEffect } from 'react';
+import EpisodeList from '../components/EpisodeList';
+import CharacterGrid from '../components/CharacterGrid';
+import { Episode, Character } from '../types';
+import './globals.css';
 
-export default function Home() {
+
+const Home: React.FC = () => {
+  const [episodes, setEpisodes] = useState<Episode[]>([]);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [selectedEpisodeId, setSelectedEpisodeId] = useState<string | null>(null);
+  const [characterCount, setCharacterCount] = useState<number>(0);
+
+
+  useEffect(() => {
+    const fetchEpisodes = async () => {
+      const response = await fetch('https://rickandmortyapi.com/api/episode');
+      const data = await response.json();
+      setEpisodes(data.results);
+    };
+    fetchEpisodes();
+  }, []);
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      if (selectedEpisodeId) {
+        const response = await fetch(`https://rickandmortyapi.com/api/episode/${selectedEpisodeId}`);
+        const { characters: characterUrls } = await response.json();
+        setCharacterCount(characterUrls.length); // Set the character count here
+        const characterPromises = characterUrls.map((url: string) => fetch(url).then((res) => res.json()));
+        const charactersData = await Promise.all(characterPromises);
+        setCharacters(charactersData);
+      } else {
+        setCharacterCount(0); // Reset the character count when no episode is selected
+        const response = await fetch('https://rickandmortyapi.com/api/character');
+        const data = await response.json();
+        setCharacters(data.results);
+      }
+    };
+    fetchCharacters();
+  }, [selectedEpisodeId]);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className="container">
+      <EpisodeList
+        episodes={episodes}
+        onSelectEpisode={setSelectedEpisodeId}
+        selectedEpisodeId={selectedEpisodeId}
+      />
+  <div className="main-content">
+  <div className='title'>Rick and Morty Characters</div>
+  {selectedEpisodeId && (
+    <p className="character-count">{characterCount} characters in episode "{episodes.find(episode => episode.id === selectedEpisodeId)?.name}"</p>
+  )}
+  <CharacterGrid characters={characters} />
+</div>
+    </div>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;
