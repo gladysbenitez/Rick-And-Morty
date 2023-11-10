@@ -29,7 +29,7 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/gladysbenitez/My-Rick-And-Morty-App.git
+git clone https://github.com/gladysbenitez/Rick-And-Morty.git
 ```
 Navigate to the project directory and install NPM packages
 
