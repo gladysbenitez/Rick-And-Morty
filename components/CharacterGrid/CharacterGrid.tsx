@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { Character } from '../types';
-import styles from '../styles/CharacterGrid.module.css';
+import { Character } from '../../types';
+import styles from '../../styles/CharacterGrid.module.css';
 
 interface CharacterGridProps {
   characters: ReadonlyArray<Character>;

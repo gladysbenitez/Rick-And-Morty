@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+    types: ["jest"],
     images: {
       remotePatterns: [
         {
           protocol: 'https',
           hostname: 'rickandmortyapi.com',
-          // Optionally, you can also specify a port and pathname here
         },
       ],
     },

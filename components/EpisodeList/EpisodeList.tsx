@@ -1,7 +1,7 @@
 import React from 'react';
-import { Episode } from '../types';
-import EpisodeButton from './EpisodeButton';
-import styles from '../styles/EpisodeList.module.css';
+import { Episode } from '../../types';
+import EpisodeButton from '../EpisodeButton/EpisodeButton';
+import styles from '../../styles/EpisodeList.module.css';
 
 interface EpisodeListProps {
   episodes: ReadonlyArray<Episode>;

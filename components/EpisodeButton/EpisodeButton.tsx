@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/EpisodeList.module.css';
+import styles from '../../styles/EpisodeList.module.css';
 
 interface EpisodeButtonProps {
     episodeId: string;
