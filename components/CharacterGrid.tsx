@@ -7,7 +7,7 @@ interface CharacterGridProps {
   characters: ReadonlyArray<Character>;
 }
 
-const CharacterGrid: React.FC<CharacterGridProps> = ({ characters }) => {
+const CharacterGrid: React.FC<CharacterGridProps> = React.memo(({ characters }) => {
   if (!characters || characters.length === 0) {
     return <div className={styles.charactergrid}>No characters available</div>;
   }
@@ -22,6 +22,6 @@ const CharacterGrid: React.FC<CharacterGridProps> = ({ characters }) => {
       ))}
     </div>
   );
-};
+});
 
 export default CharacterGrid;

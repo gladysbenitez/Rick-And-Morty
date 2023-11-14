@@ -8,14 +8,11 @@ interface EpisodeListProps {
   selectedEpisodeId: string | null;
 }
 
-const EpisodeList: React.FC<EpisodeListProps> = ({
-  episodes,
-  onSelectEpisode,
-  selectedEpisodeId,
-}) => {
+const EpisodeList: React.FC<EpisodeListProps> = React.memo(({ episodes, onSelectEpisode, selectedEpisodeId }) => {
   if (!episodes || episodes.length === 0) {
     return <div className={styles.sidebar}>No episodes available</div>;
   }
+
   return (
     <nav className={styles.sidebar} aria-label="Episode List">
       <h2 className={styles.episodesHeader}>Episodes</h2>
@@ -34,8 +31,6 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
       </ul>
     </nav>
   );
-};
+});
 
 export default EpisodeList;
-
-
