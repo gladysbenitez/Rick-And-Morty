@@ -2,18 +2,20 @@ import React from 'react';
 import { Episode } from '../types';
 import styles from '../styles/EpisodeList.module.css';
 
-
-type EpisodeListProps = {
-  episodes: Episode[];
+interface EpisodeListProps {
+  episodes: ReadonlyArray<Episode>;
   onSelectEpisode: (episodeId: string) => void;
   selectedEpisodeId: string | null;
-};
+}
 
 const EpisodeList: React.FC<EpisodeListProps> = ({
   episodes,
   onSelectEpisode,
   selectedEpisodeId,
 }) => {
+  if (!episodes || episodes.length === 0) {
+    return <div className={styles.sidebar}>No episodes available</div>;
+  }
   return (
     <div className={styles.sidebar}>
       <div className={styles.episodesHeader}>Episodes</div>

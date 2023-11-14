@@ -1,4 +1,3 @@
-
 export type Episode = {
     id: string;
     name: string;
@@ -11,3 +10,5 @@ export type Episode = {
     name: string;
     image: string;
   };
+   
+ 

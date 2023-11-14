@@ -3,12 +3,14 @@ import Image from 'next/image';
 import { Character } from '../types';
 import styles from '../styles/CharacterGrid.module.css';
 
-
-type CharacterGridProps = {
-  characters: Character[];
-};
+interface CharacterGridProps {
+  characters: ReadonlyArray<Character>;
+}
 
 const CharacterGrid: React.FC<CharacterGridProps> = ({ characters }) => {
+  if (!characters || characters.length === 0) {
+    return <div className={styles.charactergrid}>No characters available</div>;
+  }
   return (
     <div className={styles.charactergrid}>
       {characters.map((character) => (
