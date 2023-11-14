@@ -1,5 +1,6 @@
 import React from 'react';
 import { Episode } from '../types';
+import EpisodeButton from './EpisodeButton';
 import styles from '../styles/EpisodeList.module.css';
 
 interface EpisodeListProps {
@@ -19,13 +20,13 @@ const EpisodeList: React.FC<EpisodeListProps> = React.memo(({ episodes, onSelect
       <ul>
         {episodes.map((episode) => (
           <li key={episode.id}>
-            <button
-              className={`${styles.episode} ${episode.id === selectedEpisodeId ? styles.selected : ''}`}
-              onClick={() => onSelectEpisode(episode.id)}
-              aria-selected={episode.id === selectedEpisodeId}
+            <EpisodeButton
+              episodeId={episode.id}
+              isSelected={episode.id === selectedEpisodeId}
+              onSelect={() => onSelectEpisode(episode.id)}
             >
               {episode.name}
-            </button>
+            </EpisodeButton>
           </li>
         ))}
       </ul>
