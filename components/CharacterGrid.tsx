@@ -11,12 +11,13 @@ const CharacterGrid: React.FC<CharacterGridProps> = ({ characters }) => {
   if (!characters || characters.length === 0) {
     return <div className={styles.charactergrid}>No characters available</div>;
   }
+
   return (
-    <div className={styles.charactergrid}>
+    <div className={styles.charactergrid} role="list" aria-label="Character List">
       {characters.map((character) => (
-        <div key={character.id} className={styles.charactercard}>
+        <div key={character.id} className={styles.charactercard} role="listitem">
           <Image src={character.image} alt={character.name} width={100} height={100} />
-          <div>{character.name}</div>
+          <figcaption>{character.name}</figcaption>
         </div>
       ))}
     </div>
