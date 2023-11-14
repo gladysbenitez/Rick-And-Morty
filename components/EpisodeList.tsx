@@ -17,19 +17,25 @@ const EpisodeList: React.FC<EpisodeListProps> = ({
     return <div className={styles.sidebar}>No episodes available</div>;
   }
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.episodesHeader}>Episodes</div>
-      {episodes.map((episode) => (
-        <div
-          key={episode.id}
-          className={`${styles.episode} ${episode.id === selectedEpisodeId ? styles.selected : ''}`}
-          onClick={() => onSelectEpisode(episode.id)}
-        >
-          {episode.name}
-        </div>
-      ))}
-    </div>
+    <nav className={styles.sidebar} aria-label="Episode List">
+      <h2 className={styles.episodesHeader}>Episodes</h2>
+      <ul>
+        {episodes.map((episode) => (
+          <li key={episode.id}>
+            <button
+              className={`${styles.episode} ${episode.id === selectedEpisodeId ? styles.selected : ''}`}
+              onClick={() => onSelectEpisode(episode.id)}
+              aria-selected={episode.id === selectedEpisodeId}
+            >
+              {episode.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
 export default EpisodeList;
+
+
